@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "272970767717",
+    "firebase_url": "https://project-5593274257047173778.firebaseio.com",
+    "project_id": "project-5593274257047173778",
+    "storage_bucket": "project-5593274257047173778.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272970767717:android:925858eea23db84e",
+        "android_client_info": {
+          "package_name": "edu.uw.alexchow.tradeup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272970767717-9oisqo9uin4ulgrr975moibl35nraq2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQr15Jvs8p8qfwkw0wQDmA-XGFOK-y9r8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

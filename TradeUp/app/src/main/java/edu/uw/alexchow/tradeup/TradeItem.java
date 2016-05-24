@@ -7,17 +7,19 @@ import android.location.Location;
  */
 public class TradeItem {
     private int id;
-    private String name, image, status, title, description, timeStamp;
+    private String name, posterName, image, status, title, description, timeStamp;
     private Location location;
+
 
     public TradeItem() {
     }
 
-    public TradeItem(int id, String name, String image, String status,
+    public TradeItem(int id, String name, String posterName, String image, String status,
                      String title, String description, String timeStamp, Location location) {
         super();
         this.id = id;
         this.name = name;
+        this.posterName = posterName;
         this.image = image;
         this.status = status;
         this.title = title;
@@ -40,6 +42,14 @@ public class TradeItem {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPosterName() {
+        return posterName;
+    }
+
+    public void setPosterName(String posterName) {
+        this.posterName = posterName;
     }
 
     public String getImge() {
