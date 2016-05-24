@@ -2,11 +2,13 @@ package edu.uw.alexchow.tradeup;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -24,7 +26,11 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import edu.uw.alexchow.tradeup.dummy.DummyContent;
@@ -35,6 +41,9 @@ public class MainActivity extends AppCompatActivity
     private boolean mTwoPane;
     public Firebase mFirebase;
     public SimpleItemRecyclerViewAdapter mAdapter;
+
+//    public static final List<TradeItem> tradeItems = new ArrayList<TradeItem>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +71,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        View recyclerView = findViewById(R.id.tradeitem_list);
-        assert recyclerView != null;
-        mAdapter = setupRecyclerView((RecyclerView) recyclerView);
+
 
 //        // Use Firebase to populate the list.
 //        Firebase.setAndroidContext(this);
@@ -81,6 +88,68 @@ public class MainActivity extends AppCompatActivity
 //                    public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
 //                    public void onCancelled(FirebaseError firebaseError) { }
 //                };
+        Firebase.setAndroidContext(this);
+
+
+
+        Log.v("happening", "happening");
+        Log.v(DummyContent.ITEMS.size() + "", DummyContent.ITEMS.toString());
+        View recyclerView = findViewById(R.id.tradeitem_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
+
+//        mFirebase.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                Log.v("test1", dataSnapshot.getValue(TradeItem.class).toString());
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(FirebaseError firebaseError) {
+//
+//            }
+//        });
+
+//        Query queryRef = mFirebase.orderByChild("posterName");
+//        queryRef.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                TradeItem item = dataSnapshot.getValue(TradeItem.class);
+//                Log.v(dataSnapshot.getKey() + " was " + item.getPosterName(), "logs");
+//                Log.v("happn", "suttf");
+//                DummyContent.addItem(item);
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(FirebaseError firebaseError) {
+//
+//            }
+//        });
+
+
+//                .child("items");
+
+
+//
+
+
+
 
         if (findViewById(R.id.tradeitem_detail_container) != null) {
             // The detail container view will be present only in the
@@ -89,14 +158,60 @@ public class MainActivity extends AppCompatActivity
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
+
+        mFirebase = new Firebase("https://project-5593274257047173778.firebaseio.com/items");
+
+        mFirebase.addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                TradeItem item = dataSnapshot.getValue(TradeItem.class);
+                Log.v(dataSnapshot.getKey() + " was " + item.getTitle(), "logs");
+                Log.v("happn", "suttf");
+                DummyContent.addItem(item);
+
+                View recyclerView = findViewById(R.id.tradeitem_list);
+                assert recyclerView != null;
+                setupRecyclerView((RecyclerView) recyclerView);
+
+//                DummyContent.addItem(item);
+//                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
+//                    try {
+//                        TradeItem currentItem = dataSnapshot.getValue(TradeItem.class);
+//                        DummyContent.ITEMS.add(currentItem);
+//                    } catch (Exception ex) {
+//                        Log.v("message", ex.getMessage());
+//                    }
+//                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
 
 
-    private SimpleItemRecyclerViewAdapter setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS);
-        recyclerView.setAdapter(adapter);
-        return adapter;
+
+    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
     }
 
     public class SimpleItemRecyclerViewAdapter
