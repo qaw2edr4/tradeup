@@ -28,6 +28,7 @@ public class TradeItemDetailFragment extends Fragment {
      * The dummy content this fragment is presenting.
      */
     private TradeItem mItem;
+    private boolean addActivity = false;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -44,7 +45,13 @@ public class TradeItemDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+            if (getArguments().getString(ARG_ITEM_ID).equals("activityMainAdd")) {
+                addActivity = true;
+                mItem = new TradeItem();
+                mItem.setTitle("Create an Item");
+            } else {
+                mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+            }
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
@@ -57,20 +64,23 @@ public class TradeItemDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tradeitem_detail, container, false);
 
+        View rootView;
         // Show the dummy content as text in a TextView.
-        if (mItem != null) {
+        if (addActivity) {
+            rootView = inflater.inflate(R.layout.tradeitem_add, container, false);
+        } else if (mItem != null) {
+            rootView = inflater.inflate(R.layout.tradeitem_detail, container, false);
             ((TextView) rootView.findViewById(R.id.trade_item_description)).setText(mItem.description);
             ((TextView) rootView.findViewById(R.id.tradeitem_id)).setText(mItem.id);
             ((TextView) rootView.findViewById(R.id.tradeitem_name)).setText(mItem.name);
             ((TextView) rootView.findViewById(R.id.tradeitem_posterName)).setText(mItem.posterName);
             ((TextView) rootView.findViewById(R.id.tradeitem_status)).setText(mItem.status);
             ((TextView) rootView.findViewById(R.id.tradeitem_timeStamp)).setText(mItem.timeStamp);
-
+        } else {
+            rootView = inflater.inflate(R.layout.tradeitem_detail, container, false);
 
         }
-
         return rootView;
     }
 }

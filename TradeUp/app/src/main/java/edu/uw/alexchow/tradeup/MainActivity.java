@@ -59,10 +59,11 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TradeItemAddFragment fragment = new TradeItemAddFragment();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.tradeitem_detail_container, fragment)
-                        .commit();
+                Context context = view.getContext();
+                Intent intent = new Intent(context, TradeItemDetailActivity.class);
+                intent.putExtra(TradeItemDetailFragment.ARG_ITEM_ID, "activityMainAdd");
+
+                context.startActivity(intent);
             }
         });
 
