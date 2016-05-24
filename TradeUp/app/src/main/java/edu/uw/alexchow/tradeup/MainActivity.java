@@ -20,6 +20,11 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
 import java.util.List;
 
 import edu.uw.alexchow.tradeup.dummy.DummyContent;
@@ -28,6 +33,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private boolean mTwoPane;
+    public Firebase mFirebase;
+    public SimpleItemRecyclerViewAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +64,23 @@ public class MainActivity extends AppCompatActivity
 
         View recyclerView = findViewById(R.id.tradeitem_list);
         assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
+        mAdapter = setupRecyclerView((RecyclerView) recyclerView);
+
+//        // Use Firebase to populate the list.
+//        Firebase.setAndroidContext(this);
+//
+//        mFirebase = new Firebase("https://project-5593274257047173778.firebaseio.com/TradeItems")
+//                .addChildEventListener(new ChildEventListener() {
+//                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                        mAdapter.add((String)dataSnapshot.child("text").getValue());
+//                    }
+//                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+//                        mAdapter.remove((String)dataSnapshot.child("text").getValue());
+//                    }
+//                    public void onChildChanged(DataSnapshot dataSnapshot, String s) { }
+//                    public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
+//                    public void onCancelled(FirebaseError firebaseError) { }
+//                };
 
         if (findViewById(R.id.tradeitem_detail_container) != null) {
             // The detail container view will be present only in the
@@ -70,8 +93,10 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
+    private SimpleItemRecyclerViewAdapter setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        SimpleItemRecyclerViewAdapter adapter = new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS);
+        recyclerView.setAdapter(adapter);
+        return adapter;
     }
 
     public class SimpleItemRecyclerViewAdapter
