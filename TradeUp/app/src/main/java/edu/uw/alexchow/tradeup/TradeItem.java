@@ -6,15 +6,20 @@ import android.location.Location;
  * Created by alexchow on 5/23/16.
  */
 public class TradeItem {
-    private int id;
-    private String name, posterName, image, status, title, description, timeStamp;
-    private Location location;
+    public String id, name, posterName, image, status, title, description, timeStamp;
+    public Location location;
 
 
     public TradeItem() {
     }
 
-    public TradeItem(int id, String name, String posterName, String image, String status,
+    public TradeItem(String id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
+
+    public TradeItem(String id, String name, String posterName, String image, String status,
                      String title, String description, String timeStamp, Location location) {
         super();
         this.id = id;
@@ -28,11 +33,11 @@ public class TradeItem {
         this.location = location;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
