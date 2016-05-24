@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity
     private boolean mTwoPane;
     public Firebase mFirebase;
     public SimpleItemRecyclerViewAdapter mAdapter;
+    private View mRecylceView;
+
 
 //    public static final List<TradeItem> tradeItems = new ArrayList<TradeItem>();
 
@@ -72,83 +74,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-
-//        // Use Firebase to populate the list.
-//        Firebase.setAndroidContext(this);
-//
-//        mFirebase = new Firebase("https://project-5593274257047173778.firebaseio.com/TradeItems")
-//                .addChildEventListener(new ChildEventListener() {
-//                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                        mAdapter.add((String)dataSnapshot.child("text").getValue());
-//                    }
-//                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-//                        mAdapter.remove((String)dataSnapshot.child("text").getValue());
-//                    }
-//                    public void onChildChanged(DataSnapshot dataSnapshot, String s) { }
-//                    public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
-//                    public void onCancelled(FirebaseError firebaseError) { }
-//                };
         Firebase.setAndroidContext(this);
-
-
-
-        Log.v("happening", "happening");
-        Log.v(DummyContent.ITEMS.size() + "", DummyContent.ITEMS.toString());
-        View recyclerView = findViewById(R.id.tradeitem_list);
-        assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
-
-//        mFirebase.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                Log.v("test1", dataSnapshot.getValue(TradeItem.class).toString());
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError firebaseError) {
-//
-//            }
-//        });
-
-//        Query queryRef = mFirebase.orderByChild("posterName");
-//        queryRef.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                TradeItem item = dataSnapshot.getValue(TradeItem.class);
-//                Log.v(dataSnapshot.getKey() + " was " + item.getPosterName(), "logs");
-//                Log.v("happn", "suttf");
-//                DummyContent.addItem(item);
-//            }
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError firebaseError) {
-//
-//            }
-//        });
-
-
-//                .child("items");
-
-
-//
-
-
 
 
         if (findViewById(R.id.tradeitem_detail_container) != null) {
@@ -166,23 +92,11 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 TradeItem item = dataSnapshot.getValue(TradeItem.class);
-                Log.v(dataSnapshot.getKey() + " was " + item.getTitle(), "logs");
-                Log.v("happn", "suttf");
                 DummyContent.addItem(item);
 
-                View recyclerView = findViewById(R.id.tradeitem_list);
-                assert recyclerView != null;
-                setupRecyclerView((RecyclerView) recyclerView);
-
-//                DummyContent.addItem(item);
-//                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
-//                    try {
-//                        TradeItem currentItem = dataSnapshot.getValue(TradeItem.class);
-//                        DummyContent.ITEMS.add(currentItem);
-//                    } catch (Exception ex) {
-//                        Log.v("message", ex.getMessage());
-//                    }
-//                }
+                mRecylceView = findViewById(R.id.tradeitem_list);
+                assert mRecylceView != null;
+                setupRecyclerView((RecyclerView) mRecylceView);
             }
 
             @Override

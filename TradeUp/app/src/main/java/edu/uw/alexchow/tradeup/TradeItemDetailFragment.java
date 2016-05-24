@@ -61,7 +61,14 @@ public class TradeItemDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.tradeitem_detail)).setText(mItem.description);
+            ((TextView) rootView.findViewById(R.id.trade_item_description)).setText(mItem.description);
+            ((TextView) rootView.findViewById(R.id.tradeitem_id)).setText(mItem.id);
+            ((TextView) rootView.findViewById(R.id.tradeitem_name)).setText(mItem.name);
+            ((TextView) rootView.findViewById(R.id.tradeitem_posterName)).setText(mItem.posterName);
+            ((TextView) rootView.findViewById(R.id.tradeitem_status)).setText(mItem.status);
+            ((TextView) rootView.findViewById(R.id.tradeitem_timeStamp)).setText(mItem.timeStamp);
+
+
         }
 
         return rootView;

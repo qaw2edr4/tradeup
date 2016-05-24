@@ -1,9 +1,68 @@
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tradeitem_detail"
-    style="?android:attr/textAppearanceLarge"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:textIsSelectable="true"
-    tools:context="edu.uw.alexchow.tradeup.TradeItemDetailFragment" />
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/trade_item_description"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:textIsSelectable="true"
+        tools:context="edu.uw.alexchow.tradeup.TradeItemDetailFragment" />
+
+    <TextView
+        android:id="@+id/tradeitem_id"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:textIsSelectable="true"
+        tools:context="edu.uw.alexchow.tradeup.TradeItemDetailFragment" />
+
+
+    <TextView
+        android:id="@+id/tradeitem_name"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:textIsSelectable="true"
+        tools:context="edu.uw.alexchow.tradeup.TradeItemDetailFragment" />
+
+    <TextView
+        android:id="@+id/tradeitem_posterName"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:textIsSelectable="true"
+        tools:context="edu.uw.alexchow.tradeup.TradeItemDetailFragment" />
+
+    <TextView
+        android:id="@+id/tradeitem_status"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:textIsSelectable="true"
+        tools:context="edu.uw.alexchow.tradeup.TradeItemDetailFragment" />
+
+
+    <TextView
+        android:id="@+id/tradeitem_timeStamp"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:textIsSelectable="true"
+        tools:context="edu.uw.alexchow.tradeup.TradeItemDetailFragment" />
+
+
+
+
+</LinearLayout>
+
