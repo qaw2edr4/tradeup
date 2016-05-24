@@ -41,6 +41,11 @@ public class DummyContent {
         ITEM_MAP.put(item.id, item);
     }
 
+    public static void clearItems() {
+        ITEMS.clear();
+        ITEM_MAP.clear();
+    }
+
     private static TradeItem createDummyItem(int position) {
         return new TradeItem(String.valueOf(position), "Item " + position, makeDetails(position));
     }

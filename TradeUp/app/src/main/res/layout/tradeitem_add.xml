@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        android:textIsSelectable="true"
+        android:text="Description"
         tools:context="edu.uw.alexchow.tradeup.TradeItemAddFragment" />
 
     <EditText
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        android:textIsSelectable="true"
+        android:text="id"
         tools:context="edu.uw.alexchow.tradeup.TradeItemAddFragment" />
 
 
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        android:textIsSelectable="true"
+        android:text="name"
         tools:context="edu.uw.alexchow.tradeup.TradeItemAddFragment" />
 
     <EditText
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        android:textIsSelectable="true"
+        android:text="poster name"
         tools:context="edu.uw.alexchow.tradeup.TradeItemAddFragment" />
 
     <EditText
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        android:textIsSelectable="true"
+        android:text="status"
         tools:context="edu.uw.alexchow.tradeup.TradeItemAddFragment" />
 
     <EditText
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        android:textIsSelectable="true"
+        android:text="time stamp"
         tools:context="edu.uw.alexchow.tradeup.TradeItemAddFragment" />
 
     <Button

@@ -85,7 +85,7 @@ public class TradeItem {
         return description;
     }
 
-    public void setUrl(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity
 
         mFirebase = new Firebase("https://project-5593274257047173778.firebaseio.com/items");
 
+        DummyContent.clearItems();
+
         mFirebase.addChildEventListener(new ChildEventListener() {
 
             @Override
@@ -123,7 +125,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
-
 
 
 
