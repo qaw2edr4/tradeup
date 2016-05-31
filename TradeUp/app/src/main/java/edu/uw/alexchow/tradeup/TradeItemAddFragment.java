@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ public class TradeItemAddFragment extends Fragment {
      * The dummy content this fragment is presenting.
      */
     private TradeItem mItem;
+    private String TAG = "trade item add fragment";
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -36,6 +38,7 @@ public class TradeItemAddFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Log.v(TAG,"lol");
         super.onCreate(savedInstanceState);
 
 //        if (getArguments().containsKey(ARG_ITEM_ID)) {
@@ -50,6 +53,7 @@ public class TradeItemAddFragment extends Fragment {
 //                appBarLayout.setTitle(mItem.title);
 //            }
 //        }
+        Log.v(TAG,"");
     }
 
     @Override

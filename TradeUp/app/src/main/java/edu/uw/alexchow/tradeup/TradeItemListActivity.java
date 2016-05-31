@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ public class TradeItemListActivity extends AppCompatActivity {
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
+
+    private String TAG = "trade item activity";
     private boolean mTwoPane;
 
     @Override
@@ -61,6 +64,7 @@ public class TradeItemListActivity extends AppCompatActivity {
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
 
+        Log.v(TAG,"");
 
         if (findViewById(R.id.tradeitem_detail_container) != null) {
             // The detail container view will be present only in the
